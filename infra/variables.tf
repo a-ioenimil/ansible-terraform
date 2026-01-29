@@ -15,3 +15,9 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+
+variable "aws_region" {
+  description = "AWS Region"
+  type        = string
+  default     = "eu-west-1"
+}

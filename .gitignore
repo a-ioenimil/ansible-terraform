@@ -20,3 +20,6 @@ ansible/inventory.ini
 .vscode/
 __pycache__/
 *.swp
+
+
+LAB_INSTRUCTIONS.md

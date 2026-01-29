@@ -24,9 +24,9 @@ module "compute" {
 }
 
 resource "local_file" "ansible_inventory" {
-  content = <<EOT
+  content  = <<EOT
 [webservers]
-${module.compute.instance_id} ansible_connection=aws_ssm ansible_aws_ssm_region=us-east-1 ansible_user=ssm-user
+${module.compute.instance_id} ansible_connection=aws_ssm ansible_aws_ssm_region=${var.aws_region} ansible_user=ssm-user
 EOT
   filename = "${path.module}/../ansible/inventory.ini"
 }
