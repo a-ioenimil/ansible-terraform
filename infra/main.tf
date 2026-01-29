@@ -24,9 +24,17 @@ module "compute" {
 }
 
 resource "local_file" "ansible_inventory" {
-  content  = <<EOT
-[webservers]
-${module.compute.instance_id} ansible_connection=aws_ssm ansible_aws_ssm_region=${var.aws_region} ansible_user=ssm-user
+  content  = <<-EOT
+---
+all:
+  children:
+    webservers:
+      hosts:
+        ${module.compute.instance_id}:
+          ansible_connection: aws_ssm
+          ansible_aws_ssm_region: ${var.aws_region}
+          ansible_aws_ssm_bucket_name: ""
+          ansible_aws_ssm_s3_addressing_style: virtual
 EOT
-  filename = "${path.module}/../ansible/inventory.ini"
+  filename = "${path.module}/../ansible/inventory.yml"
 }
