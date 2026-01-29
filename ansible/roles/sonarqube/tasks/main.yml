@@ -1,0 +1,16 @@
+---
+- name: Increase vm.max_map_count for SonarQube
+  sysctl:
+    name: vm.max_map_count
+    value: "{{ sonarqube_vm_max_map_count | default('262144') }}"
+    state: present
+    reload: yes
+
+- name: Run SonarQube Container
+  community.docker.docker_container:
+    name: sonarqube
+    image: "{{ container_image | default('sonarqube:community') }}"
+    state: started
+    ports:
+      - "127.0.0.1:{{ app_port | default(9000) }}:{{ sonarqube_internal_port | default(9000) }}"
+    restart_policy: always

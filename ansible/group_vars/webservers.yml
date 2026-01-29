@@ -1,0 +1,12 @@
+---
+# Application Configuration
+app_port: 9000
+container_image: "sonarqube:community"
+
+# SonarQube Specifics
+sonarqube_internal_port: 9000
+sonarqube_vm_max_map_count: "262144"
+
+# Nginx Configuration
+nginx_worker_connections: 1024
+nginx_keepalive_timeout: 65

@@ -1,1 +1,22 @@
 AGENTS.md
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfplan
+.terraform.lock.hcl
+terraform.tfstate.d/
+crash.log
+
+# Ansible
+*.retry
+ansible/inventory.ini
+*.log
+
+# General
+.DS_Store
+.vscode/
+__pycache__/
+*.swp
