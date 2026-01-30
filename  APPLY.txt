@@ -1,0 +1,20 @@
+module.security.aws_iam_role.ssm_role: Creating...
+module.security.aws_security_group.web_sg: Creating...
+module.security.aws_iam_role.ssm_role: Creation complete after 3s [id=devops-lab-dev-ssm-role]
+module.security.aws_iam_role_policy_attachment.ssm_policy: Creating...
+module.security.aws_iam_instance_profile.ssm_profile: Creating...
+module.security.aws_iam_role_policy_attachment.ssm_policy: Creation complete after 1s [id=devops-lab-dev-ssm-role-20260130153433462300000001]
+module.security.aws_security_group.web_sg: Creation complete after 7s [id=sg-02ff69fd6b74ab125]
+module.security.aws_iam_instance_profile.ssm_profile: Creation complete after 9s [id=devops-lab-dev-ssm-profile]
+module.compute.aws_instance.app_server: Creating...
+module.compute.aws_instance.app_server: Still creating... [00m09s elapsed]
+module.compute.aws_instance.app_server: Creation complete after 18s [id=i-0328512fbe0268206]
+local_file.ansible_inventory: Creating...
+local_file.ansible_inventory: Creation complete after 0s [id=b9d7f247c39e050ee1bbee8c27a46a52c6e7f185]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+instance_id = "i-0328512fbe0268206"
+public_ip = "52.208.213.141"
