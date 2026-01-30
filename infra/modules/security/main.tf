@@ -20,6 +20,30 @@ resource "aws_iam_role_policy_attachment" "ssm_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+resource "aws_iam_role_policy" "ssm_s3_policy" {
+  name = "${var.project_name}-${var.environment}-ssm-s3-policy"
+  role = aws_iam_role.ssm_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          var.ssm_bucket_arn,
+          "${var.ssm_bucket_arn}/*"
+        ]
+      }
+    ]
+  })
+}
+
 resource "aws_iam_instance_profile" "ssm_profile" {
   name = "${var.project_name}-${var.environment}-ssm-profile"
   role = aws_iam_role.ssm_role.name

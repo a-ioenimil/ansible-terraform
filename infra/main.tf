@@ -5,12 +5,20 @@ module "networking" {
   environment  = var.environment
 }
 
-module "security" {
-  source = "./modules/security"
+module "storage" {
+  source = "./modules/storage"
 
   project_name = var.project_name
   environment  = var.environment
-  vpc_id       = module.networking.vpc_id
+}
+
+module "security" {
+  source = "./modules/security"
+
+  project_name   = var.project_name
+  environment    = var.environment
+  vpc_id         = module.networking.vpc_id
+  ssm_bucket_arn = module.storage.ssm_bucket_arn
 }
 
 module "compute" {
@@ -33,7 +41,7 @@ all:
         ${module.compute.instance_id}:
           ansible_connection: aws_ssm
           ansible_aws_ssm_region: ${var.aws_region}
-          ansible_aws_ssm_bucket_name: ""
+          ansible_aws_ssm_bucket_name: ${module.storage.ssm_bucket_name}
           ansible_aws_ssm_s3_addressing_style: virtual
 EOT
   filename = "${path.module}/../ansible/inventory.yml"

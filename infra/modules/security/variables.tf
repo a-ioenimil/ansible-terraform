@@ -12,3 +12,8 @@ variable "vpc_id" {
   description = "VPC ID where security groups will be created"
   type        = string
 }
+
+variable "ssm_bucket_arn" {
+  description = "ARN of the S3 bucket for SSM"
+  type        = string
+}
