@@ -1,4 +1,4 @@
-# 🚀 DevOps Lab: The "No-SSH" Revolution with Terraform & Ansible
+# 🚀 The "No-SSH" Revolution with Terraform & Ansible
 
 Forget everything you know about standard SSH keys and port 22 open to the world. This project deploys a **SonarQube** server on AWS using a **fully SSM-powered architecture**.
 
